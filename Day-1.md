@@ -1,4 +1,5 @@
 #Day-1
+
 Here's your profile, built from what you actually told me — not generic filler.
 
 1. AI Working Style You're a "think-first, search-second" user. You sit with a problem, try to reason it through yourself, and only bring AI in once you've hit a real wall — not as a first resort. That means when you do prompt, your questions are usually sharper and more specific, because you've already eliminated the obvious stuff. You use AI as a research partner and a coding co-pilot, not a crutch.
