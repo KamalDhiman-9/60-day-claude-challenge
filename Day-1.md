@@ -1,4 +1,4 @@
-#Day-1
+
 
 Here's your profile, built from what you actually told me — not generic filler.
 
