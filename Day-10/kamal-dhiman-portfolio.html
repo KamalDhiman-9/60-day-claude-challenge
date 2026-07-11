@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamal Dhiman — AI & ML Engineer</title>
+<meta name="description" content="Kamal Dhiman is an AI/ML Engineer specializing in NLP, Deep Learning, and full-stack AI applications. Explore projects, skills, and experience.">
+<meta name="keywords" content="Kamal Dhiman, AI Engineer, ML Engineer, Machine Learning, Deep Learning, NLP, Portfolio, Flask, TensorFlow">
+<meta name="author" content="Kamal Dhiman">
+<meta property="og:title" content="Kamal Dhiman — AI & ML Engineer">
+<meta property="og:description" content="AI/ML Engineer building intelligent systems across NLP, Deep Learning, and Computer Vision.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0F14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          ink: { 950: '#0B0F14', 900: '#0F1620', 800: '#151E2B' },
+          teal: { 400: '#2DD4BF', 500: '#14B8A6', 300: '#5EEAD4' },
+          violet: { 400: '#A78BFA', 500: '#8B5CF6', 300: '#C4B5FD' },
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  ::selection { background: #2DD4BF; color: #0B0F14; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Skill bar fill */
+  .skill-fill { width: 0%; transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  /* Nav link active underline */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1.5px;
+    background: linear-gradient(90deg, #2DD4BF, #A78BFA);
+    transition: width 0.3s ease;
+  }
+  .nav-link.active::after { width: 100%; }
+
+  /* Typing cursor */
+  .cursor-blink { animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Card hover lift */
+  .proj-card { transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+  .proj-card:hover { transform: translateY(-6px); border-color: rgba(45,212,191,0.5); box-shadow: 0 20px 60px -20px rgba(45,212,191,0.25); }
+
+  /* Signature: synapse network canvas sits behind hero */
+  #synapse-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2DD4BF33; border-radius: 6px; }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  .grain {
+    background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  .glow-border {
+    border: 1px solid rgba(148,163,184,0.15);
+  }
+
+  .bar-track { background: rgba(148,163,184,0.12); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #2DD4BF; outline-offset: 3px;
+  }
+</style>
+</head>
+<body class="bg-white dark:bg-ink-950 text-slate-800 dark:text-slate-200 font-body antialiased transition-colors duration-300">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-white/70 dark:bg-ink-950/70 border-b border-slate-200/60 dark:border-white/5">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#home" class="font-display font-semibold text-lg tracking-tight">
+      Kamal<span class="text-teal-500">.</span><span class="text-violet-500">dev</span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="#about" class="nav-link hover:text-teal-500 transition-colors">About</a></li>
+      <li><a href="#skills" class="nav-link hover:text-teal-500 transition-colors">Skills</a></li>
+      <li><a href="#projects" class="nav-link hover:text-teal-500 transition-colors">Projects</a></li>
+      <li><a href="#achievements" class="nav-link hover:text-teal-500 transition-colors">Achievements</a></li>
+      <li><a href="#contact" class="nav-link hover:text-teal-500 transition-colors">Contact</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full flex items-center justify-center border border-slate-300 dark:border-white/10 hover:border-teal-500 transition-colors">
+        <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.36 6.36-1.06-1.06M6.7 6.7 5.64 5.64m12.72 0-1.06 1.06M6.7 17.3l-1.06 1.06M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button id="menu-toggle" aria-label="Open menu" class="md:hidden w-9 h-9 flex items-center justify-center">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-ink-950 border-b border-slate-200 dark:border-white/5 px-6 py-4 space-y-3 text-sm font-medium">
+    <a href="#about" class="block">About</a>
+    <a href="#skills" class="block">Skills</a>
+    <a href="#projects" class="block">Projects</a>
+    <a href="#achievements" class="block">Achievements</a>
+    <a href="#contact" class="block">Contact</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-16">
+  <canvas id="synapse-canvas" class="opacity-60 dark:opacity-100"></canvas>
+  <div class="absolute inset-0 grain pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 dark:via-ink-950/40 to-white dark:to-ink-950 pointer-events-none"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 w-full grid md:grid-cols-[1.2fr,0.8fr] gap-12 items-center">
+    <div>
+      <p class="font-mono text-teal-500 text-sm mb-5 tracking-wide">// AI/ML Engineer &amp; Full-Stack AI Developer</p>
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6">
+        Kamal Dhiman
+      </h1>
+      <div class="font-mono text-lg sm:text-xl text-slate-600 dark:text-slate-400 mb-8 h-8">
+        <span id="typed-text"></span><span class="cursor-blink text-teal-500">_</span>
+      </div>
+      <p class="text-slate-600 dark:text-slate-400 max-w-xl mb-10 leading-relaxed">
+        I design and ship intelligent systems — from neural networks that read handwriting to
+        chatbots that remember who you are. Currently building at the intersection of
+        NLP, deep learning, and pragmatic full-stack engineering.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#projects" class="px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-violet-500 text-ink-950 font-semibold text-sm hover:opacity-90 transition-opacity">
+          View Projects
+        </a>
+        <a href="#contact" class="px-6 py-3 rounded-full border border-slate-300 dark:border-white/15 text-sm font-medium hover:border-teal-500 transition-colors">
+          Get in Touch
+        </a>
+        <div class="flex items-center gap-3 ml-1">
+          <a href="https://github.com/KamalDhiman-9" target="_blank" rel="noopener" aria-label="GitHub" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/15 flex items-center justify-center hover:border-teal-500 hover:text-teal-500 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.43-2.69 5.41-5.26 5.7.42.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .3.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/kamal-dhiman-0058b6276/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/15 flex items-center justify-center hover:border-teal-500 hover:text-teal-500 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a href="mailto:dhimankamal687@gmail.com" aria-label="Email" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/15 flex items-center justify-center hover:border-teal-500 hover:text-teal-500 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden md:flex justify-center">
+      <div class="relative w-64 h-64 lg:w-80 lg:h-80">
+        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-teal-400/20 to-violet-500/20 blur-2xl"></div>
+        <div class="relative w-full h-full rounded-full glow-border bg-slate-100 dark:bg-ink-900 flex items-center justify-center overflow-hidden">
+          <span class="font-display text-7xl font-bold bg-gradient-to-br from-teal-400 to-violet-400 bg-clip-text text-transparent">KD</span>
+        </div>
+        <div class="absolute -bottom-3 -right-3 bg-ink-950 dark:bg-white text-white dark:text-ink-950 font-mono text-xs px-3 py-1.5 rounded-full">
+          ~98% MNIST acc.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 dark:text-slate-600 animate-bounce" aria-label="Scroll down">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+  </a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="py-28 px-6 border-t border-slate-200 dark:border-white/5">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-[0.4fr,0.6fr] gap-12">
+    <div class="reveal">
+      <p class="font-mono text-teal-500 text-sm mb-3">01 / About</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight">Systems that learn, built to ship.</h2>
+    </div>
+    <div class="reveal space-y-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+      <p>
+        I'm a Computer Science student specializing in AI at Hindu College of Engineering, Sonipat —
+        and an engineer who prefers finished products over toy notebooks. My work spans deep learning,
+        NLP, and computer vision, but I care most about the last mile: turning a model into something
+        people can actually open in a browser and use.
+      </p>
+      <p>
+        That's shown up as a resume analyzer that scores real job applications against real job
+        descriptions, a chatbot that remembers who it's talking to across sessions, and a digit
+        classifier tuned to ~98% accuracy from scratch. I'm certified by IBM, Oracle, IIT Delhi &amp;
+        Microsoft, and HP LIFE — and I'm currently looking for my next AI/ML engineering role.
+      </p>
+      <div class="flex flex-wrap gap-6 pt-4 font-mono text-sm">
+        <div><span class="text-2xl font-display font-semibold text-teal-500">4+</span><br>ML projects shipped</div>
+        <div><span class="text-2xl font-display font-semibold text-violet-500">98%</span><br>MNIST accuracy</div>
+        <div><span class="text-2xl font-display font-semibold text-teal-500">5</span><br>certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="py-28 px-6 bg-slate-50 dark:bg-ink-900/40 border-t border-slate-200 dark:border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-teal-500 text-sm mb-3 reveal">02 / Skills</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-14 reveal">What I build with.</h2>
+
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-6 mb-16">
+      <div class="reveal">
+        <div class="flex justify-between text-sm font-medium mb-2"><span>Python</span><span class="font-mono text-slate-400">95%</span></div>
+        <div class="h-1.5 rounded-full bar-track"><div class="skill-fill h-full rounded-full bg-gradient-to-r from-teal-400 to-teal-500" data-width="95"></div></div>
+      </div>
+      <div class="reveal">
+        <div class="flex justify-between text-sm font-medium mb-2"><span>TensorFlow / Keras</span><span class="font-mono text-slate-400">88%</span></div>
+        <div class="h-1.5 rounded-full bar-track"><div class="skill-fill h-full rounded-full bg-gradient-to-r from-violet-400 to-violet-500" data-width="88"></div></div>
+      </div>
+      <div class="reveal">
+        <div class="flex justify-between text-sm font-medium mb-2"><span>NLP / Scikit-learn</span><span class="font-mono text-slate-400">85%</span></div>
+        <div class="h-1.5 rounded-full bar-track"><div class="skill-fill h-full rounded-full bg-gradient-to-r from-teal-400 to-teal-500" data-width="85"></div></div>
+      </div>
+      <div class="reveal">
+        <div class="flex justify-between text-sm font-medium mb-2"><span>Flask / REST APIs</span><span class="font-mono text-slate-400">90%</span></div>
+        <div class="h-1.5 rounded-full bar-track"><div class="skill-fill h-full rounded-full bg-gradient-to-r from-violet-400 to-violet-500" data-width="90"></div></div>
+      </div>
+      <div class="reveal">
+        <div class="flex justify-between text-sm font-medium mb-2"><span>SQL / SQLite / MySQL</span><span class="font-mono text-slate-400">82%</span></div>
+        <div class="h-1.5 rounded-full bar-track"><div class="skill-fill h-full rounded-full bg-gradient-to-r from-teal-400 to-teal-500" data-width="82"></div></div>
+      </div>
+      <div class="reveal">
+        <div class="flex justify-between text-sm font-medium mb-2"><span>JavaScript / HTML / CSS</span><span class="font-mono text-slate-400">78%</span></div>
+        <div class="h-1.5 rounded-full bar-track"><div class="skill-fill h-full rounded-full bg-gradient-to-r from-violet-400 to-violet-500" data-width="78"></div></div>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-8">
+      <div class="reveal">
+        <h3 class="font-display font-semibold mb-4 text-sm uppercase tracking-wider text-slate-500">Languages &amp; ML</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Python</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">C++</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Java</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">SQL</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Deep Learning</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">NLTK</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="font-display font-semibold mb-4 text-sm uppercase tracking-wider text-slate-500">Tools</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">VS Code</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Jupyter</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Git / GitHub</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Power BI</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Regex</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="font-display font-semibold mb-4 text-sm uppercase tracking-wider text-slate-500">Soft Skills</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Problem Solving</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Communication</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Agile Collaboration</span>
+          <span class="tag px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10">Fast Learner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="py-28 px-6 border-t border-slate-200 dark:border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-teal-500 text-sm mb-3 reveal">03 / Projects</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-14 reveal">Selected work.</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="proj-card reveal glow-border rounded-2xl p-8 bg-slate-50 dark:bg-ink-900/60">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-mono text-xs text-slate-400">Feb – May 2026</span>
+          <span class="text-violet-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L4.5 12l5.25-5m6 10l5.25-5-5.25-5"/></svg>
+          </span>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2">Chatbot with Memory</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 leading-relaxed">
+          Context-aware NLP chatbot with persistent cross-session memory and SQLite-backed user
+          profiling that auto-extracts interests to deliver personalized recommendations.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">Python</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">Flask</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">SQLite</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal glow-border rounded-2xl p-8 bg-slate-50 dark:bg-ink-900/60">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-mono text-xs text-slate-400">Mar – Apr 2026</span>
+          <span class="text-teal-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L4.5 12l5.25-5m6 10l5.25-5-5.25-5"/></svg>
+          </span>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2">AI Resume Analyzer</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 leading-relaxed">
+          End-to-end NLP pipeline that scores resumes against job descriptions with TF-IDF cosine
+          similarity, flags missing ATS keywords, and returns structured feedback.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">Scikit-learn</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">NLTK</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">Flask</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">pypdf</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal glow-border rounded-2xl p-8 bg-slate-50 dark:bg-ink-900/60">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-mono text-xs text-slate-400">Feb – Mar 2026</span>
+          <span class="text-violet-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L4.5 12l5.25-5m6 10l5.25-5-5.25-5"/></svg>
+          </span>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2">Handwritten Digit Recognition</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 leading-relaxed">
+          Multi-layer deep neural network trained on MNIST, reaching ~98% accuracy across all 10
+          digit classes, with custom training visualizations and loss-curve analysis.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">TensorFlow</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">Keras</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">NumPy</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400">Matplotlib</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal glow-border rounded-2xl p-8 bg-slate-50 dark:bg-ink-900/60">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-mono text-xs text-slate-400">Jan – Feb 2026</span>
+          <span class="text-teal-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L4.5 12l5.25-5m6 10l5.25-5-5.25-5"/></svg>
+          </span>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2">Pharmacy Management System</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 leading-relaxed">
+          Full-stack Flask app for a local pharmacy with real-time medicine search, dynamic
+          inventory management, and secure prescription upload for remote ordering.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">Flask</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">JSON</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">HTML5/CSS3</span>
+          <span class="tag px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400">File I/O</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section id="achievements" class="py-28 px-6 bg-slate-50 dark:bg-ink-900/40 border-t border-slate-200 dark:border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-teal-500 text-sm mb-3 reveal">04 / Experience &amp; Certifications</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-14 reveal">Track record.</h2>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="reveal">
+        <h3 class="font-display font-semibold text-lg mb-6">Experience</h3>
+        <div class="space-y-8 border-l border-slate-300 dark:border-white/10 pl-6">
+          <div class="relative">
+            <span class="absolute -left-[27px] top-1.5 w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+            <p class="font-mono text-xs text-slate-400 mb-1">Jun – Jul 2026</p>
+            <h4 class="font-semibold">Python Developer Intern — Qskill</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Built automation scripts and backend solutions during a focused remote internship.</p>
+          </div>
+          <div class="relative">
+            <span class="absolute -left-[27px] top-1.5 w-2.5 h-2.5 rounded-full bg-violet-500"></span>
+            <p class="font-mono text-xs text-slate-400 mb-1">Feb – Apr 2026</p>
+            <h4 class="font-semibold">AI/ML Engineer Intern — Code-A-Nova</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Shipped 4 AI/ML projects across 2 phases, working with NLP pipelines, REST APIs, and deep learning frameworks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h3 class="font-display font-semibold text-lg mb-6">Certifications</h3>
+        <ul class="space-y-3">
+          <li class="flex items-center gap-3 text-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0"></span>
+            AI Fundamentals — IBM
+          </li>
+          <li class="flex items-center gap-3 text-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0"></span>
+            Oracle AI Foundation — Oracle
+          </li>
+          <li class="flex items-center gap-3 text-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0"></span>
+            AI/ML Workshop — FITT &amp; IIT Delhi × Microsoft
+          </li>
+          <li class="flex items-center gap-3 text-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0"></span>
+            Critical Thinking in the AI Era — HP LIFE
+          </li>
+          <li class="flex items-center gap-3 text-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0"></span>
+            Power BI Workshop — Froyo Technologies
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="py-28 px-6 border-t border-slate-200 dark:border-white/5">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+    <div class="reveal">
+      <p class="font-mono text-teal-500 text-sm mb-3">05 / Contact</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-6">Let's build something.</h2>
+      <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+        Open to AI/ML engineering roles, internships, and collaborations. Sonipat, Haryana, India —
+        working remote-friendly.
+      </p>
+      <div class="space-y-4 text-sm">
+        <a href="mailto:dhimankamal687@gmail.com" class="flex items-center gap-3 hover:text-teal-500 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          dhimankamal687@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/kamal-dhiman-0058b6276/" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-teal-500 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          linkedin.com/in/kamal-dhiman
+        </a>
+        <a href="https://github.com/KamalDhiman-9" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-teal-500 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.43-2.69 5.41-5.26 5.7.42.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .3.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          github.com/KamalDhiman-9
+        </a>
+      </div>
+    </div>
+
+    <form id="contact-form" class="reveal space-y-4" onsubmit="return handleSubmit(event)">
+      <div>
+        <label for="name" class="block text-sm font-medium mb-1.5">Name</label>
+        <input required id="name" name="name" type="text" placeholder="Your name"
+          class="w-full px-4 py-2.5 rounded-lg bg-slate-50 dark:bg-ink-900 border border-slate-300 dark:border-white/10 focus:border-teal-500 outline-none text-sm transition-colors">
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium mb-1.5">Email</label>
+        <input required id="email" name="email" type="email" placeholder="you@example.com"
+          class="w-full px-4 py-2.5 rounded-lg bg-slate-50 dark:bg-ink-900 border border-slate-300 dark:border-white/10 focus:border-teal-500 outline-none text-sm transition-colors">
+      </div>
+      <div>
+        <label for="message" class="block text-sm font-medium mb-1.5">Message</label>
+        <textarea required id="message" name="message" rows="4" placeholder="Tell me about the opportunity..."
+          class="w-full px-4 py-2.5 rounded-lg bg-slate-50 dark:bg-ink-900 border border-slate-300 dark:border-white/10 focus:border-teal-500 outline-none text-sm transition-colors resize-none"></textarea>
+      </div>
+      <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-teal-500 to-violet-500 text-ink-950 font-semibold text-sm hover:opacity-90 transition-opacity">
+        Send Message
+      </button>
+      <p id="form-status" class="text-sm text-teal-500 hidden">Thanks! Your message is ready — this opens your email client to send it.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="py-8 px-6 border-t border-slate-200 dark:border-white/5 text-center text-xs text-slate-400 font-mono">
+  © 2026 Kamal Dhiman. Built with HTML, Tailwind &amp; a bit of neural curiosity.
+</footer>
+
+<script>
+  // ===== Theme toggle =====
+  const root = document.documentElement;
+  const sunIcon = document.getElementById('icon-sun');
+  const moonIcon = document.getElementById('icon-moon');
+  function applyTheme(t) {
+    if (t === 'dark') { root.classList.add('dark'); sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); }
+    else { root.classList.remove('dark'); sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); }
+  }
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved || (prefersDark ? 'dark' : 'dark'));
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const isDark = root.classList.contains('dark');
+    const next = isDark ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
+  });
+
+  // ===== Mobile menu =====
+  const menuBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // ===== Typing animation =====
+  const phrases = ['AI/ML Engineer', 'NLP & Deep Learning', 'Full-Stack AI Developer', 'Builder of intelligent systems'];
+  let pIndex = 0, cIndex = 0, deleting = false;
+  const typedEl = document.getElementById('typed-text');
+  function typeLoop() {
+    const current = phrases[pIndex];
+    if (!deleting) {
+      cIndex++;
+      typedEl.textContent = current.slice(0, cIndex);
+      if (cIndex === current.length) { deleting = true; setTimeout(typeLoop, 1600); return; }
+    } else {
+      cIndex--;
+      typedEl.textContent = current.slice(0, cIndex);
+      if (cIndex === 0) { deleting = false; pIndex = (pIndex + 1) % phrases.length; }
+    }
+    setTimeout(typeLoop, deleting ? 35 : 65);
+  }
+  typeLoop();
+
+  // ===== Scroll reveal =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ===== Skill bar animation =====
+  const skillBars = document.querySelectorAll('.skill-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.width + '%';
+        skillObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  skillBars.forEach(b => skillObserver.observe(b));
+
+  // ===== Active nav highlighting =====
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4, rootMargin: '-80px 0px -60% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // ===== Contact form =====
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const subject = encodeURIComponent('Portfolio inquiry from ' + name);
+    const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = `mailto:dhimankamal687@gmail.com?subject=${subject}&body=${body}`;
+    const status = document.getElementById('form-status');
+    status.classList.remove('hidden');
+    return false;
+  }
+
+  // ===== Synapse network canvas (signature element) =====
+  (function() {
+    const canvas = document.getElementById('synapse-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, nodes = [];
+    const NODE_COUNT = 46;
+
+    function resize() {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    }
+    function init() {
+      resize();
+      nodes = Array.from({ length: NODE_COUNT }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.6 + 0.8
+      }));
+    }
+    function isDark() { return document.documentElement.classList.contains('dark'); }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      const lineColor = isDark() ? 'rgba(94,234,212,' : 'rgba(139,92,246,';
+      const nodeColor = isDark() ? 'rgba(94,234,212,0.9)' : 'rgba(139,92,246,0.5)';
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        a.x += a.vx; a.y += a.vy;
+        if (a.x < 0 || a.x > w) a.vx *= -1;
+        if (a.y < 0 || a.y > h) a.vy *= -1;
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            ctx.strokeStyle = lineColor + (0.16 * (1 - dist / 140)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+        ctx.fillStyle = nodeColor;
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize', resize);
+    init();
+    draw();
+  })();
+</script>
+</body>
+</html>
